@@ -139,6 +139,18 @@ export default function App() {
 
   // 🌓 Theme toggle
   const toggleTheme = () => setDarkMode(!darkMode);
+  const speak = (text) => {
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.0; // speaking speed
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+    speechSynthesis.speak(utterance);
+  } else {
+    alert('Text-to-Speech not supported on this browser.');
+  }
+};
+
 
   return (
     <div
@@ -247,6 +259,17 @@ export default function App() {
                       ? `${msg.sender}: ${msg.text}`
                       : msg.text}
                   </div>
+                  {msg.type !== 'system' && (
+                    <button
+                      onClick={() => speak(`${msg.sender ? msg.sender + ' says: ' : ''}${msg.text}`)}
+                      className={`ml-2 text-xs hover:text-blue-500 transition ${
+                        darkMode ? 'text-gray-300' : 'text-gray-500'
+                      }`}
+                      title="Read aloud"
+                    >
+                      🔊
+                    </button>
+                  )}
                   <div
                     className={`text-xs mt-1 ${
                       darkMode ? 'text-gray-400' : 'text-gray-500'
