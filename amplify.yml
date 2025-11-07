@@ -3,10 +3,11 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install vite @vitejs/plugin-react
-        - npm ci
+        - echo "Installing all dependencies including devDependencies..."
+        - npm install
     build:
       commands:
+        - echo "Running Vite build..."
         - npm run build
   artifacts:
     baseDirectory: dist
@@ -15,3 +16,4 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
+
