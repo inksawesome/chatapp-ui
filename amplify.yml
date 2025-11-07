@@ -3,11 +3,10 @@ frontend:
   phases:
     preBuild:
       commands:
-        - echo "Installing all dependencies including devDependencies..."
-        - npm install
+        - echo "Using Node $(node -v) and npm $(npm -v)"
+        - npm ci
     build:
       commands:
-        - echo "Running Vite build..."
         - npm run build
   artifacts:
     baseDirectory: dist
@@ -16,4 +15,3 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
-
