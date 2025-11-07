@@ -5,11 +5,15 @@ frontend:
       commands:
         - echo "🧠 Using Node $(node -v) and npm $(npm -v)"
         - rm -rf node_modules dist .vite || true
-        - npm ci --no-cache
+        # Install all dependencies including devDependencies
+        - npm install --include=dev
+        # Force Vite and plugin-react globally (safety fallback)
+        - npm install -g vite @vitejs/plugin-react
+        - npm rebuild vite --force || true
     build:
       commands:
         - echo "🚀 Starting Vite build..."
-        - ./node_modules/.bin/vite build
+        - vite build --config vite.config.js
   artifacts:
     baseDirectory: dist
     files:
