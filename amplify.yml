@@ -5,11 +5,11 @@ frontend:
       commands:
         - echo "🧠 Using Node $(node -v) and npm $(npm -v)"
         - rm -rf node_modules dist || true
-        - npm install vite @vitejs/plugin-react --save-dev
         - npm install
+        - npm install vite @vitejs/plugin-react --save-dev
     build:
       commands:
-        - npx vite build --config vite.config.mjs
+        - npx vite build --config vite.config.js
   artifacts:
     baseDirectory: dist
     files:
