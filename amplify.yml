@@ -3,7 +3,9 @@ frontend:
   phases:
     preBuild:
       commands:
-        - echo "Using Node $(node -v) and npm $(npm -v)"
+        - echo "🧠 Using Node $(node -v) and npm $(npm -v)"
+        - nvm install 20
+        - nvm use 20
         - npm ci
     build:
       commands:
