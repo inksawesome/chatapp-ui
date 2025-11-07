@@ -9,7 +9,7 @@ frontend:
     build:
       commands:
         - echo "🚀 Starting Vite build..."
-        - npx vite build
+        - npm run build
   artifacts:
     baseDirectory: dist
     files:
