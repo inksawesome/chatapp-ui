@@ -4,8 +4,8 @@ frontend:
     preBuild:
       commands:
         - echo "🧠 Using Node $(node -v) and npm $(npm -v)"
-        - rm -rf node_modules dist || true
-        - npm ci
+        - rm -rf node_modules dist .vite || true
+        - npm ci --no-cache
     build:
       commands:
         - echo "🚀 Starting Vite build..."
