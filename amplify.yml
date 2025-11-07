@@ -6,10 +6,12 @@ frontend:
         - echo "🧠 Using Node $(node -v) and npm $(npm -v)"
         - rm -rf node_modules dist || true
         - npm install
-        - npm install vite @vitejs/plugin-react --save-dev
+        # Force Vite to be globally available
+        - npm install -g vite @vitejs/plugin-react
     build:
       commands:
-        - npx vite build --config vite.config.js
+        # Run build using global vite (bypasses npx path issue)
+        - vite build --config vite.config.js
   artifacts:
     baseDirectory: dist
     files:
