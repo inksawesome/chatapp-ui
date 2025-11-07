@@ -5,7 +5,8 @@ frontend:
       commands:
         - echo "🧠 Using Node $(node -v) and npm $(npm -v)"
         - rm -rf node_modules dist || true
-        - npm ci || npm install
+        - npm install vite @vitejs/plugin-react --save-dev
+        - npm install
     build:
       commands:
         - npx vite build --config vite.config.mjs
