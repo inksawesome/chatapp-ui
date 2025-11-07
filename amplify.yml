@@ -4,7 +4,8 @@ frontend:
     preBuild:
       commands:
         - echo "🧠 Using Node $(node -v) and npm $(npm -v)"
-        - npm ci
+        - npm install vite @vitejs/plugin-react --save-dev
+        - npm ci || npm install
     build:
       commands:
         - npx vite build
