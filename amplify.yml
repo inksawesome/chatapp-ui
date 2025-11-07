@@ -8,7 +8,7 @@ frontend:
         - npm ci || npm install
     build:
       commands:
-        - npx vite build --config vite.config.js
+        - npx vite build --config vite.config.mjs
   artifacts:
     baseDirectory: dist
     files:
